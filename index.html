@@ -1,13 +1,645 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Duxiang Ren</title>
+  <meta name="description" content="Duxiang Ren is President of the Swiss Chinese Ski Association, a ski coach, student, chef, and builder of ski tourism projects in Switzerland.">
+  <meta property="og:title" content="Duxiang Ren">
+  <meta property="og:description" content="President of the Swiss Chinese Ski Association · Ski Coach · Student · Chef">
+  <meta property="og:image" content="images/duxiang-ren-avatar.jpeg">
+  <meta property="og:type" content="website">
+  <style>
+    :root {
+      --ink: #17211d;
+      --muted: #66716d;
+      --paper: #fffdf8;
+      --line: #ded8ca;
+      --pine: #19483a;
+      --pine-strong: #0f3027;
+      --copper: #a96336;
+      --bg: #f4f1e9;
+      --soft: #edf3f1;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, #faf8f1 0, var(--bg) 520px, #f7f5ee 100%);
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(222, 216, 202, 0.82);
+      background: rgba(250, 248, 241, 0.88);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: min(1180px, calc(100% - 32px));
+      min-height: 58px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      color: var(--pine-strong);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.1rem;
+      font-weight: 650;
+      letter-spacing: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover {
+      color: var(--pine);
+    }
+
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto 56px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.98fr);
+      gap: 1.4rem;
+      align-items: stretch;
+      padding-top: 1rem;
+      min-height: 560px;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 560px;
+      padding: clamp(2rem, 6vw, 5.5rem);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: 0 22px 54px rgba(23, 33, 29, 0.08);
+    }
+
+    .avatar-wrap {
+      width: 104px;
+      height: 104px;
+      margin-bottom: 1.15rem;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 12px 26px rgba(23, 33, 29, 0.1);
+    }
+
+    .avatar {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: 53% 45%;
+    }
+
+    .kicker,
+    .label {
+      margin: 0 0 0.8rem;
+      color: var(--copper);
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--pine-strong);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 7vw, 6.6rem);
+      font-weight: 650;
+      line-height: 0.95;
+    }
+
+    .titleline {
+      max-width: 620px;
+      margin: 1.25rem 0 0;
+      color: var(--pine);
+      font-size: clamp(1.06rem, 2vw, 1.36rem);
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .lede {
+      max-width: 600px;
+      margin: 1.1rem 0 0;
+      color: #34423d;
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0.68rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--pine);
+      font-size: 0.95rem;
+      font-weight: 750;
+      line-height: 1;
+      transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .button:hover {
+      border-color: var(--pine);
+      transform: translateY(-1px);
+    }
+
+    .button-primary {
+      border-color: var(--pine);
+      background: var(--pine);
+      color: #fff;
+    }
+
+    .button-primary:hover {
+      background: var(--pine-strong);
+    }
+
+    .hero-media {
+      position: relative;
+      min-height: 560px;
+      margin: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #d7e2e8;
+      box-shadow: 0 22px 54px rgba(23, 33, 29, 0.08);
+    }
+
+    .hero-media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 560px;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10, 24, 34, 0.02), rgba(10, 24, 34, 0.36));
+      pointer-events: none;
+    }
+
+    .role-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 1rem;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--line);
+    }
+
+    .role-strip div {
+      min-height: 96px;
+      padding: 1.15rem;
+      background: var(--paper);
+    }
+
+    .role-strip span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 0.06em;
+      line-height: 1.25;
+      text-transform: uppercase;
+    }
+
+    .role-strip strong {
+      display: block;
+      margin-top: 0.3rem;
+      color: var(--pine-strong);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.32rem;
+      line-height: 1.18;
+    }
+
+    .section {
+      margin-top: 4.5rem;
+    }
+
+    .intro {
+      max-width: 840px;
+    }
+
+    .intro p {
+      margin: 0;
+      color: #25312d;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.35rem, 2.7vw, 2rem);
+      line-height: 1.42;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(160px, 0.34fr) minmax(0, 0.66fr);
+      gap: 1.4rem;
+      align-items: start;
+      margin-bottom: 1.4rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--pine-strong);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      line-height: 1.05;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    .service {
+      min-height: 238px;
+      padding: 1.25rem;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+
+    .service-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.35rem;
+      height: 2.35rem;
+      border-radius: 50%;
+      background: #e8f0ee;
+      color: var(--pine);
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    h3 {
+      margin: 1.1rem 0 0.55rem;
+      color: var(--pine-strong);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.35rem;
+      line-height: 1.18;
+    }
+
+    .service p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.58;
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.1fr);
+      gap: 2rem;
+      align-items: end;
+      padding: clamp(1.4rem, 4vw, 2.4rem);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .feature p:last-child {
+      margin: 0;
+      color: #2f403a;
+      font-size: 1.06rem;
+      line-height: 1.7;
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
+      gap: 2rem;
+      align-items: center;
+      margin-top: 4.5rem;
+      padding: clamp(1.4rem, 4vw, 2.4rem);
+      border-radius: 8px;
+      background: var(--pine-strong);
+      color: #fff;
+    }
+
+    .contact .label,
+    .contact h2,
+    .contact p {
+      color: #fff;
+    }
+
+    .contact p {
+      max-width: 600px;
+      margin: 0.85rem 0 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 1.02rem;
+      line-height: 1.62;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 46px;
+      padding: 0.75rem 0.85rem;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 6px;
+      color: #fff;
+      font-weight: 750;
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-links a:hover {
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    @media (max-width: 1120px) {
+      .hero,
+      .feature,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .hero,
+      .hero-content,
+      .hero-media,
+      .hero-media img {
+        min-height: auto;
+      }
+
+      .hero-media {
+        aspect-ratio: 16 / 10;
+      }
+
+      .hero-media img {
+        height: 100%;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 767px) {
+      body {
+        font-size: 17px;
+      }
+
+      .nav {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      main {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .hero {
+        gap: 0.85rem;
+        padding-top: 0.75rem;
+      }
+
+      .hero-content {
+        padding: 1.35rem;
+      }
+
+      .titleline,
+      .lede {
+        font-size: 1rem;
+      }
+
+      .actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .role-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .role-strip div {
+        min-height: 86px;
+        padding: 0.95rem;
+      }
+
+      .role-strip strong {
+        font-size: 1.08rem;
+      }
+
+      .section {
+        margin-top: 3rem;
+      }
+
+      .section-heading {
+        grid-template-columns: 1fr;
+        gap: 0.35rem;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service {
+        min-height: auto;
+      }
+
+      .feature,
+      .contact {
+        gap: 1rem;
+        margin-top: 3rem;
+        padding: 1.25rem;
+      }
+
+      .contact-links a {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Duxiang Ren</h1>
-  <p>President of the Swiss Chinese Ski Association</p>
-  <p>Ski Coach · Building ski tourism projects in Switzerland</p>
-  <p>Website coming soon.</p>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#top">Duxiang Ren</a>
+      <div class="nav-links">
+        <a href="#work">What I Do</a>
+        <a href="#focus">Focus</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <div class="avatar-wrap">
+          <img class="avatar" src="images/duxiang-ren-avatar.jpeg" alt="Duxiang Ren in ski gear in the Swiss Alps">
+        </div>
+        <p class="kicker">Switzerland · Ski Coaching · Hospitality</p>
+        <h1 id="hero-title">Duxiang Ren</h1>
+        <p class="titleline">President of the Swiss Chinese Ski Association · Ski Coach · Student · Chef</p>
+        <p class="lede">Building ski tourism projects in Switzerland that bring coaching, mountain culture, hospitality, and community together.</p>
+        <div class="actions" aria-label="Contact Duxiang Ren">
+          <a class="button button-primary" href="mailto:renrenduxiang@gmail.com">Email</a>
+          <a class="button" href="tel:+41798565930">Call</a>
+        </div>
+      </div>
+
+      <figure class="hero-media">
+        <img src="images/duxiang-ren-avatar.jpeg" alt="Duxiang Ren on a snowy ski slope in the Swiss Alps">
+      </figure>
+    </section>
+
+    <section class="role-strip" aria-label="Roles">
+      <div>
+        <span>Association</span>
+        <strong>President</strong>
+      </div>
+      <div>
+        <span>Mountain</span>
+        <strong>Ski Coach</strong>
+      </div>
+      <div>
+        <span>Learning</span>
+        <strong>Student</strong>
+      </div>
+      <div>
+        <span>Hospitality</span>
+        <strong>Chef</strong>
+      </div>
+    </section>
+
+    <section class="section intro">
+      <p>I am based in Switzerland and work at the intersection of ski education, travel, food, and community. Through the Swiss Chinese Ski Association, I help Chinese-speaking skiers and travelers connect with the Alps through safe coaching, clear local guidance, and welcoming experiences.</p>
+    </section>
+
+    <section class="section" id="work">
+      <div class="section-heading">
+        <p class="label">What I Do</p>
+        <h2>Ski experiences with structure, warmth, and local knowledge.</h2>
+      </div>
+
+      <div class="service-grid">
+        <article class="service">
+          <span class="service-icon">✦</span>
+          <h3>Ski Coaching</h3>
+          <p>Private and group coaching for individuals, families, and Chinese-speaking ski communities in Switzerland.</p>
+        </article>
+        <article class="service">
+          <span class="service-icon">⌂</span>
+          <h3>Ski Tourism</h3>
+          <p>Planning and local coordination for ski trips, mountain routes, resorts, logistics, and seasonal travel projects.</p>
+        </article>
+        <article class="service">
+          <span class="service-icon">＋</span>
+          <h3>Community</h3>
+          <p>Events and group experiences that connect Chinese-speaking skiers with Swiss mountain culture.</p>
+        </article>
+        <article class="service">
+          <span class="service-icon">◌</span>
+          <h3>Hospitality</h3>
+          <p>Food and hospitality ideas that make ski travel feel more personal, warm, and memorable.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section feature" id="focus">
+      <div>
+        <p class="label">Current Focus</p>
+        <h2>Building ski tourism projects in Switzerland.</h2>
+      </div>
+      <p>I am developing experiences that combine professional coaching, multilingual support, practical travel planning, and a strong sense of belonging for visitors discovering Swiss ski culture.</p>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div>
+        <p class="label">Contact</p>
+        <h2 id="contact-title">Let’s connect.</h2>
+        <p>For ski coaching, Swiss ski travel, association work, or collaboration opportunities, reach out directly.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:renrenduxiang@gmail.com">renrenduxiang@gmail.com</a>
+        <a href="tel:+41798565930">079 856 59 30</a>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
